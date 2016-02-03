@@ -1304,16 +1304,16 @@ Sub CustomReportAuto()
   Next  
   'finish off
   If p.Terminate Then
-	p.Text = "CustomReport: Cancelled by user..."
+	p.Text = "MV nfo generator: Cancelled by user..."
 	SDB.ProcessMessages
 	If fso.FileExists(Filename) Then
 	  Call fso.DeleteFile(Filename)
 	End If
 	If Debug Then Call out("(Cancelled by user)")
   Else 
-	p.Text = "CustomReport: Awaiting user confirmation..."
+	p.Text = "MV nfo generator: Awaiting user confirmation..."
 	SDB.ProcessMessages  
-	If SDB.MessageBox("CustomReport: Report complete, display now?",mtConfirmation,Array(mbYes,mbNo)) = mrYes Then
+	If SDB.MessageBox("MV nfo generator: Report complete, display now?",mtConfirmation,Array(mbYes,mbNo)) = mrYes Then
 	  Dim wsh : Set wsh = CreateObject("WScript.Shell")
 	  Call wsh.Run(str&Chr(34)&Filename&Chr(34),1,0)
 	End If
@@ -2016,9 +2016,9 @@ Sub clear()
   Dim wsh : Set wsh = CreateObject("WScript.Shell")
   Dim loc : loc = wsh.ExpandEnvironmentStrings("%TEMP%")
   If Right(loc,1) = "\" Then
-    loc = loc&"CustomReport.log"
+    loc = loc&"MVNfoGenerator.log"
   Else
-    loc = loc&"\CustomReport.log"
+    loc = loc&"\MVNfoGenerator.log"
   End If
   Dim fso : Set fso = CreateObject("Scripting.FileSystemObject")
   Dim logf : Set logf = fso.CreateTextFile(loc,True)
