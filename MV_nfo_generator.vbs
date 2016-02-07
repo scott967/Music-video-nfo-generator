@@ -308,13 +308,13 @@ Sub CustomReport()
   'default delimiters
   Dim del1,del2,del3
   If SDB.IniFile.StringValue("MVNfoGenerator","Delim1") = "" Then
-    SDB.IniFile.StringValue("MVNfoGenerator","Delim1") = "¬"
+    SDB.IniFile.StringValue("MVNfoGenerator","Delim1") = "Â¬"
   End If
   If SDB.IniFile.StringValue("MVNfoGenerator","Delim2") = "" Then
-    SDB.IniFile.StringValue("MVNfoGenerator","Delim2") = "¬,¬"
+    SDB.IniFile.StringValue("MVNfoGenerator","Delim2") = "Â¬,Â¬"
   End If
   If SDB.IniFile.StringValue("MVNfoGenerator","Delim3") = "" Then
-    SDB.IniFile.StringValue("MVNfoGenerator","Delim3") = "¬"
+    SDB.IniFile.StringValue("MVNfoGenerator","Delim3") = "Â¬"
   End If  
   
   'show form
@@ -1824,22 +1824,22 @@ Function DelimiterClick(Control)
   Dim ini : Set ini = SDB.IniFile
   Dim del1 : del1 = GetDelim(1)
   del1 = SkinnedInputBox("First delimiter (before first value)","MVNfoGenerator",del1,"CustomReportDialog")
-  ini.StringValue("MVNfoGenerator","Delim1") = Replace(del1,"""","¬")
+  ini.StringValue("MVNfoGenerator","Delim1") = Replace(del1,"""","Â¬")
   Dim del2 : del2 = GetDelim(2)
   del2 = SkinnedInputBox("Middle delimiter (between values)","MVNfoGenerator",del2,"CustomReportDialog")
-  ini.StringValue("MVNfoGenerator","Delim2") = Replace(del2,"""","¬")
+  ini.StringValue("MVNfoGenerator","Delim2") = Replace(del2,"""","Â¬")
   Dim del3 : del3 = GetDelim(3)
   del3 = SkinnedInputBox("Last delimiter (after last value)","MVNfoGenerator",del3,"CustomReportDialog")
-  ini.StringValue("MVNfoGenerator","Delim3") = Replace(del3,"""","¬")
+  ini.StringValue("MVNfoGenerator","Delim3") = Replace(del3,"""","Â¬")
 End Function
 
 Function GetDelim(i)
   Dim del : del = SDB.IniFile.StringValue("MVNfoGenerator","Delim"&i)
-  GetDelim = Replace(del,"¬","""")
+  GetDelim = Replace(del,"Â¬","""")
 End Function
 
 Function SetDelim(i,del)
-  SDB.IniFile.StringValue("MVNfoGenerator","Delim"&i) = Replace(del,"""","¬")
+  SDB.IniFile.StringValue("MVNfoGenerator","Delim"&i) = Replace(del,"""","Â¬")
   SetDelim = True
 End Function
 
@@ -2003,10 +2003,10 @@ Sub Install()
   If Not (inif Is Nothing) Then
     inif.StringValue("MVNfoGenerator","Filename") = "MV_nfo_generator.vbs"
     inif.StringValue("MVNfoGenerator","Procname") = "CustomReport"
-    inif.StringValue("MVNfoGeneratorr","Order") = "61"
+    inif.StringValue("MVNfoGenerator","Order") = "61"
     inif.StringValue("MVNfoGenerator","DisplayName") = "MV nfo generator"
     inif.StringValue("MVNfoGenerator","Description") = "Create Kodi nfo file for Music videos"
-    inif.StringValue("MVNfoGeneratorr","Language") = "VBScript"
+    inif.StringValue("MVNfoGenerator","Language") = "VBScript"
     inif.StringValue("MVNfoGenerator","ScriptType") = "1"   
     SDB.RefreshScriptItems
   End If
